@@ -7,5 +7,139 @@
     "us-east-1e",
     "us-east-1f"
   ],
-  "ssm:account=503561454536:parameterName=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64:region=us-east-1": "ami-01816d07b1128cd2d"
+  "ssm:account=503561454536:parameterName=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64:region=us-east-1": "ami-01816d07b1128cd2d",
+  "vpc-provider:account=503561454536:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0c7017c7e908a2564",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "ownerAccountId": "503561454536",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0cd4df9e1619a463a",
+            "cidr": "172.31.80.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-03147f907c5b929dd"
+          },
+          {
+            "subnetId": "subnet-0287a03423074ce89",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-03147f907c5b929dd"
+          },
+          {
+            "subnetId": "subnet-0e74203fca6cd79f8",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-east-1c",
+            "routeTableId": "rtb-03147f907c5b929dd"
+          },
+          {
+            "subnetId": "subnet-00d2b356dc56b0a92",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-east-1d",
+            "routeTableId": "rtb-03147f907c5b929dd"
+          },
+          {
+            "subnetId": "subnet-0006e05186cc10a48",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "us-east-1e",
+            "routeTableId": "rtb-03147f907c5b929dd"
+          },
+          {
+            "subnetId": "subnet-01d5ed0c7e9354f95",
+            "cidr": "172.31.64.0/20",
+            "availabilityZone": "us-east-1f",
+            "routeTableId": "rtb-03147f907c5b929dd"
+          }
+        ]
+      }
+    ]
+  },
+  "vpc-provider:account=503561454536:filter.vpc-id=vpc-02a1af09483b23344:region=us-east-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-02a1af09483b23344",
+    "vpcCidrBlock": "192.168.0.0/16",
+    "ownerAccountId": "503561454536",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Isolated",
+        "type": "Isolated",
+        "subnets": [
+          {
+            "subnetId": "subnet-02565ed75a4bfba33",
+            "cidr": "192.168.1.0/24",
+            "availabilityZone": "us-east-2a",
+            "routeTableId": "rtb-060c874d25667e824"
+          },
+          {
+            "subnetId": "subnet-028c1a089a2e443f2",
+            "cidr": "192.168.2.0/24",
+            "availabilityZone": "us-east-2b",
+            "routeTableId": "rtb-060c874d25667e824"
+          }
+        ]
+      }
+    ]
+  },
+  "ami:account=503561454536:filters.image-type.0=machine:filters.name.0=ubuntu/images/hvm-ssd/ubuntu-focal-20.04-arm64-server-20240205-3ba3581b-86f4-4bf1-a9a5-c2e11fe9408d:filters.state.0=available:owners.0=679593333241:region=us-east-1": "ami-0003587eff209a1d8",
+  "ami:account=503561454536:filters.image-type.0=machine:filters.name.0=ubuntu-2004-vm-circleci-classic-1727797387:filters.state.0=available:owners.0=483285841698:region=us-east-1": "ami-000d841032e72b43c",
+  "vpc-provider:account=503561454536:filter.vpc-id=vpc-059c4615ec1768974:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-059c4615ec1768974",
+    "vpcCidrBlock": "192.168.0.0/16",
+    "ownerAccountId": "503561454536",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public1",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0ea7c8959c0826c66",
+            "cidr": "192.168.2.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-06ac54d0d969f9e88"
+          }
+        ]
+      },
+      {
+        "name": "Private2",
+        "type": "Isolated",
+        "subnets": [
+          {
+            "subnetId": "subnet-09a4d48517f9de7ef",
+            "cidr": "192.168.1.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-00a3b555df5a85531"
+          }
+        ]
+      },
+      {
+        "name": "Public2",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0761b7c59ef5fd6da",
+            "cidr": "192.168.3.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-07e84f5fcedf1a879"
+          }
+        ]
+      },
+      {
+        "name": "Private1",
+        "type": "Isolated",
+        "subnets": [
+          {
+            "subnetId": "subnet-0357f39625ce111b3",
+            "cidr": "192.168.0.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0aeb7f61d4efa5605"
+          }
+        ]
+      }
+    ]
+  }
 }
