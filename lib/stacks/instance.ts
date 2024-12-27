@@ -2,7 +2,10 @@ import * as cdk from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { InstanceTarget } from 'aws-cdk-lib/aws-elasticloadbalancingv2-targets';
-// import * as route53 from 'aws-cdk-lib/aws-route53';
+import * as route53 from 'aws-cdk-lib/aws-route53';
+import * as targets from 'aws-cdk-lib/aws-route53-targets';
+
+
 import { Construct } from 'constructs';
 import { readFileSync } from 'fs';
 
@@ -31,10 +34,10 @@ export class InstanceStack extends cdk.Stack {
     // });
 
     const vpc = ec2.Vpc.fromLookup(this, 'ImportedVpc', {
-      vpcId: 'vpc-040dd52b750aa3c89',
+      vpcId: 'vpc-0e4b429d6d666af66',
     });
 
-    const securityGroup = ec2.SecurityGroup.fromSecurityGroupId(this, 'instancesSGW', 'sg-06a2c5a37e92da5f0');
+    const securityGroup = ec2.SecurityGroup.fromSecurityGroupId(this, 'instancesSGW', 'sg-0870182e4d378313e');
 
     // Block Device Configuration
     const rootVolume: ec2.BlockDevice = {
@@ -112,33 +115,49 @@ export class InstanceStack extends cdk.Stack {
     instanceTargetGroup.addTarget(new InstanceTarget(instance1));
     instanceTargetGroup.addTarget(new InstanceTarget(instance2));
 
-    // const certificateArn = 'arn:aws:acm:us-east-1:503561454536:certificate/7ff3d32f-290f-4674-9a8b-e6a973413468'
+    const certificateArn = 'arn:aws:acm:us-east-2:503561454536:certificate/c8bd6e60-4583-4955-b7bc-da4cb39ea4d7'
 
-    // const HttpsListener = alb.addListener('HTTPSListener', {
-    //   port: 443,
-    //   certificates: [elbv2.ListenerCertificate.fromArn(certificateArn)],
-    //   defaultTargetGroups: [instanceTargetGroup]
-    // })
-    // // Create Listener for the ALB
+    const HttpsListener = alb.addListener('HTTPSListener', {
+      port: 443,
+      certificates: [elbv2.ListenerCertificate.fromArn(certificateArn)],
+      defaultTargetGroups: [instanceTargetGroup],
+    });
+    
+
+
     const listener = alb.addListener('HTTPListener', {
       port: 80,
-      // defaultAction: elbv2.ListenerAction.redirect({
-      //   protocol: 'HTTPS',
-      //   port: '443'
-      // })
+      defaultAction: elbv2.ListenerAction.redirect({
+        protocol: 'HTTPS',
+        port: '443',
+      }),
     });
+    
 
     // Add Target Group to Listener
-    listener.addTargetGroups('TargetGroup1', {
-      targetGroups: [instanceTargetGroup],
+    // listener.addTargetGroups('TargetGroup1', {
+    //   targetGroups: [instanceTargetGroup],
+    // });
+
+    // HttpsListener.addTargetGroups('TargetGroup2', {
+    //   targetGroups: [instanceTargetGroup],
+    // });
+
+    const zoneFromAttributes = route53.HostedZone.fromHostedZoneAttributes(this, 'MyZone', {
+      zoneName: 'markettest.store',
+      hostedZoneId: 'Z00316211F6MNL27WVB7F',
     });
 
 
-    // const zoneFromAttributes = route53.PublicHostedZone.fromPublicHostedZoneAttributes(this, 'MyZone', {
-    //   zoneName: 'markettest.com',
-    //   hostedZoneId: 'Z00316211F6MNL27WVB7F',
-    // });
-
+    new route53.ARecord(this, 'AliasRecord', {
+      zone: zoneFromAttributes,
+      recordName: 'test',
+      target: route53.RecordTarget.fromAlias(
+        new targets.LoadBalancerTarget(alb, {
+          evaluateTargetHealth: true,
+        }),
+    ),})
+    
     // Tags for EC2 Instances
     cdk.Tags.of(instance1).add('Name', 'CDK_pr1');
     cdk.Tags.of(instance2).add('Name', 'CDK_pr2');

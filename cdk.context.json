@@ -365,5 +365,143 @@
         ]
       }
     ]
+  },
+  "vpc-provider:account=503561454536:filter.vpc-id=vpc-0668a9a8d7a3fba86:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0668a9a8d7a3fba86",
+    "vpcCidrBlock": "192.168.0.0/16",
+    "ownerAccountId": "503561454536",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-066a4bed66537f7e4",
+            "cidr": "192.168.0.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-06bc97fd1721d5a85"
+          },
+          {
+            "subnetId": "subnet-067d96501dab1acbb",
+            "cidr": "192.168.1.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-043132c77b997a339"
+          }
+        ]
+      },
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-04ae955b600f3703b",
+            "cidr": "192.168.2.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0a8a78b32dc8be753"
+          },
+          {
+            "subnetId": "subnet-095ada864d26b6b85",
+            "cidr": "192.168.3.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-0dbdc8573c06b8fe6"
+          }
+        ]
+      }
+    ]
+  },
+  "vpc-provider:account=503561454536:filter.vpc-id=vpc-014d788038bf04b46:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-014d788038bf04b46",
+    "vpcCidrBlock": "192.168.0.0/16",
+    "ownerAccountId": "503561454536",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0b8b7bbbcdddd26f3",
+            "cidr": "192.168.2.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0c5ad59095cb767bb"
+          },
+          {
+            "subnetId": "subnet-07313f51fe0b468f3",
+            "cidr": "192.168.3.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-06764de33f6041f23"
+          }
+        ]
+      },
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-0670c324287d3e386",
+            "cidr": "192.168.0.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0330b07a71f5310ed"
+          },
+          {
+            "subnetId": "subnet-0b73ac1f910a6cbe5",
+            "cidr": "192.168.1.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-0f5ef69226d396cba"
+          }
+        ]
+      }
+    ]
+  },
+  "availability-zones:account=503561454536:region=us-east-2": [
+    "us-east-2a",
+    "us-east-2b",
+    "us-east-2c"
+  ],
+  "ssm:account=503561454536:parameterName=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64:region=us-east-2": "ami-0b4624933067d393a",
+  "vpc-provider:account=503561454536:filter.vpc-id=vpc-0e4b429d6d666af66:region=us-east-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0e4b429d6d666af66",
+    "vpcCidrBlock": "192.168.0.0/16",
+    "ownerAccountId": "503561454536",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-08578fb5683bf06f0",
+            "cidr": "192.168.2.0/24",
+            "availabilityZone": "us-east-2a",
+            "routeTableId": "rtb-00bf8a6ca9e550790"
+          },
+          {
+            "subnetId": "subnet-00676fd4207632023",
+            "cidr": "192.168.3.0/24",
+            "availabilityZone": "us-east-2b",
+            "routeTableId": "rtb-07f9d8a171266aab2"
+          }
+        ]
+      },
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-0951edf67b8a8c9cf",
+            "cidr": "192.168.0.0/24",
+            "availabilityZone": "us-east-2a",
+            "routeTableId": "rtb-0087a6b154b2732f3"
+          },
+          {
+            "subnetId": "subnet-0a340c452aead67a6",
+            "cidr": "192.168.1.0/24",
+            "availabilityZone": "us-east-2b",
+            "routeTableId": "rtb-0e2d05c58941a4c52"
+          }
+        ]
+      }
+    ]
   }
 }
